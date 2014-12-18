@@ -18,7 +18,8 @@ module.exports = Marionette.Application.extend({
     
     // State Collection
 
-    var stateCollection = new StateCollection([AppStates.LOAD, AppStates.LOADING, AppStates.MAIN], 'app');
+    var stateCollection = new StateCollection('app');
+    stateCollection.add([AppStates.LOAD, AppStates.LOADING, AppStates.MAIN]);
 
     // Router
 

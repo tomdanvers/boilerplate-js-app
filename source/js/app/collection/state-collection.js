@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var Backbone = require('backbone');
 var EventBus = require('../event-bus');
 
@@ -11,9 +12,10 @@ module.exports = Backbone.Collection.extend({
 		this.id = id;
 
 		console.log('StateCollection.initialize(',this.id, this.models,')');
+
+		this.on('add', this.onAdd, this);
 	},
 	changeState: function(state, options) {
-		
 
 		if (typeof(state) === 'string') {
 			state = this.get(state);
@@ -37,5 +39,8 @@ module.exports = Backbone.Collection.extend({
 		this.state = state;
 
 		EventBus.trigger('state:enter', this.state, options);
+	},
+	onAdd: function() {
 	}
+	
 });
