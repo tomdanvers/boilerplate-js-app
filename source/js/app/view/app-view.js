@@ -26,7 +26,7 @@ module.exports = Marionette.LayoutView.extend({
 			
 		var ViewConstructor = null;
 		
-		switch(state){
+		switch(state.id){
 			case AppStates.LOADING.id:
 				ViewConstructor = LoadingView;
 				break;

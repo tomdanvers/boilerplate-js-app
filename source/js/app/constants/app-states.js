@@ -9,6 +9,7 @@ module.exports = {
     },
     MAIN: {
         id: 'main',
-        index: 2
+        index: 2,
+        route: 'main'
     }
 };

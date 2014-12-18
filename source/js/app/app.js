@@ -4,7 +4,7 @@ var Marionette = require('backbone.marionette');
 var EventBus = require('./event-bus');
 
 var AppStates = require('./constants/app-states');
-var StateModel = require('./model/state-model');
+var StateCollection = require('./collection/state-collection');
 
 var AppView = require('./view/app-view');
 
@@ -16,31 +16,31 @@ module.exports = Marionette.Application.extend({
 
     var appView = new AppView();
     
-    // State Model
+    // State Collection
 
-    var stateModel = new StateModel('app', AppStates);
+    var stateCollection = new StateCollection([AppStates.LOAD, AppStates.LOADING, AppStates.MAIN], 'app');
 
     // Router
 
     var router = new Backbone.Router({
         routes: {
             '': 'index',
-            'main': AppStates.MAIN.id
+            'main': AppStates.MAIN.route
         }
     });
 
     router.on('route:index', function(){
 
-        stateModel.changeState(AppStates.LOAD);
+        stateCollection.changeState(AppStates.LOAD);
 
     });
 
     router.on('route:main', function(){
 
         if(this.loaded){
-            stateModel.changeState(AppStates.MAIN);    
+            stateCollection.changeState(AppStates.MAIN);    
         } else {
-            stateModel.changeState(AppStates.LOAD);    
+            stateCollection.changeState(AppStates.LOAD);    
         }
         
     });
@@ -48,23 +48,23 @@ module.exports = Marionette.Application.extend({
     // Event Bus
 
     EventBus.on('state:enter', function(state){
-        var route = '';
-        switch(state){
+        switch(state.id){
             case AppStates.LOAD.id:
-                stateModel.changeState(AppStates.LOADING);
+                stateCollection.changeState(AppStates.LOADING);
                 break;
             case AppStates.LOADING.id:
                 this.loaded = true;
                 setTimeout(function() {
-                    stateModel.changeState(AppStates.MAIN);
+                    stateCollection.changeState(AppStates.MAIN);
                 }, 1000);
                 break;
             case AppStates.MAIN.id:
-                route = state;
                 break;
         }
+        if (state.get('route')) {
+            router.navigate(state.get('route'));    
+        }
         
-        router.navigate(route);
 
     });
 
