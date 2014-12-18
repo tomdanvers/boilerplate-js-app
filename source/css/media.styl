@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Media Queries - Move to components
+   ========================================================================== */
+
+@media only screen and (min-width: 450px) {
+    .header,.footer {
+        text-align: left;
+    }
+
+    .header-btn {
+        width: 52px;
+    }
+
+    .header-nav-btn {
+        float: left;
+        display: none;
+    }
+
+    .holder {
+        padding: 0 50px;
+        margin-top: 20px;
+    }
+
+    .l-main-centre {
+        padding: 0 20px;
+    }
+
+    .l-login-column {
+        float: left;
+        width: 50%;
+    }
+
+    .l-login-column-inner {
+        padding: 0 10px;
+    }
+
+    .places-navigation {
+        /*display: inline-block;*/
+    }
+
+    .places-navigation-holder {
+        display: block;
+        left: 0;
+        top: 52px;
+        position: static;
+        overflow: hidden;
+    }
+
+    .places-navigation-holder.collapse {
+        max-height: 250px;
+    }
+
+    .places-navigation li {
+        float: left;
+        padding: 5px 10px 0 0;
+    }
+
+    .places-navigation li:first-child {
+    }
+
+    .places-navigation li:last-child {
+        border-right: none;
+    }
+
+    .places-navigation-button:hover, .selected {
+        /*outline-bottom: 3px solid rgb(55, 167, 255);*/
+    }
+
+    .responsive-text {
+        display: block;
+    }
+
+    .bg-nav {
+       border-radius: 0;
+    }
+}
