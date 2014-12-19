@@ -1,0 +1,37 @@
+{
+  "name": "Boilerplate - JS App",
+  "author": "Tom Danvers",
+  "sync": {
+    "proxy": "boilerplate",
+    "browser": "google chrome",
+    "open": "local",
+    "files": [
+        "distribution/css/main.min.css",
+        "distribution/js/main.js"
+    ]
+  },
+  "src": {
+    "styles": "./source/css/styles.styl",
+    "scripts": "./source/js/app/main.js",
+    "lint": "source/js/app/*.js'",
+    "watch": {
+      "styles": "source/**/*.{css,styl}",
+      "scripts": "source/**/*.{js,hbs}",
+      "lint": [
+        "gulpfile.js",
+        "source/**/*.js"
+      ]
+    }
+  },
+  "dest": {
+    "paths": {
+      "css": "./distribution/css",
+      "js": "./distribution/js"  
+    },
+    "names": {
+      "css": "main.min.css",
+      "jsmin": "main.min.js",
+      "js": "main.js"  
+    }
+  }
+}

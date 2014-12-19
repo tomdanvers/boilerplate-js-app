@@ -41,6 +41,7 @@ module.exports = Backbone.Collection.extend({
 		EventBus.trigger('state:enter', this.state, options);
 	},
 	onAdd: function() {
+		//this.sequentialStates = this.
 	}
 	
 });
