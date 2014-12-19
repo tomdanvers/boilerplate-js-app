@@ -31,6 +31,8 @@ module.exports = Marionette.LayoutView.extend({
 				ViewConstructor = LoadingView;
 				break;
 			case AppStates.MAIN.id:
+			case AppStates.SEQUENTIAL_1.id:
+			case AppStates.SEQUENTIAL_2.id:
 				ViewConstructor = MainView;
 				break;
 		}
