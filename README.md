@@ -34,6 +34,6 @@ http://editorconfig.org/
 Streaming build system
 http://gulpjs.com/
 
-###
+###Browser Sync
 Time-saving synchronised browser testing
 http://www.browsersync.io/
